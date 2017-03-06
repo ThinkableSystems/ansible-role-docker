@@ -1,4 +1,9 @@
 ---
+- name: Docker | Install python dependencies
+  pip:  name={{item}}
+  with_items:
+    - docker-py
+    
 # tasks file for avinetworks.docker
 - name: Docker | Include Specific Variables
   include_vars: "{{ ansible_distribution }}.yml"
@@ -15,6 +20,9 @@
 
 - name: Docker | Deploy Config
   include: deploy_config.yml
+
+- name: Docker | Restart Docker
+  service: name=docker state=restarted
 
 - name: Docker | Proxy configuration
   include: proxy.yml
