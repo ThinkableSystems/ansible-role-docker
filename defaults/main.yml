@@ -1,2 +1,3 @@
 ---
 # defaults file for avinetworks.docker
+use_kernel_extras: false
